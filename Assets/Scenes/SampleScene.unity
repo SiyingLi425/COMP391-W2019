@@ -483,6 +483,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a668b01b81a0b7147a09a898487d82b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 7650918244437305604, guid: 6a20c1f25109ab247aca21c29f84bb62,
+    type: 3}
+  explosionPlayer: {fileID: 8582893697755401489, guid: 9ae6e2bdbe3f1cd49bfc9c0a254fe316,
+    type: 3}
 --- !u!114 &1540995834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,6 +622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1862459559}
   - component: {fileID: 1862459558}
+  - component: {fileID: 1862459560}
   m_Layer: 0
   m_Name: space1
   m_TagString: Untagged
@@ -687,6 +692,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1862459560
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862459557}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3cb63292c22e071438e496614efdc88c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3678779177422791643
 PrefabInstance:
   m_ObjectHideFlags: 0

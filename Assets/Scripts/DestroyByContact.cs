@@ -6,6 +6,7 @@ public class DestroyByContact : MonoBehaviour
 {
 
     public GameObject explosion;
+    public GameObject explosionPlayer;
     void OnTriggerEnter2D(Collider2D other)
         {
 
@@ -18,6 +19,8 @@ public class DestroyByContact : MonoBehaviour
             if (other.tag == "Player")
             {
             //trigger game over logic in here
+            GameObject temp =  Instantiate(explosionPlayer, other.transform.position, other.transform.rotation);
+            
                 Destroy(other.gameObject);
             }
 
