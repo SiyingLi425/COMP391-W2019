@@ -129,6 +129,8 @@ MonoBehaviour:
     type: 3}
   explosionPlayer: {fileID: 8582893697755401489, guid: 9ae6e2bdbe3f1cd49bfc9c0a254fe316,
     type: 3}
+  scoreValue: 10
+  gameController: {fileID: 0}
 --- !u!50 &5473659382740920165
 Rigidbody2D:
   serializedVersion: 4

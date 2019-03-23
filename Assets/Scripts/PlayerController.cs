@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
     // Public Variables
@@ -18,7 +19,8 @@ public class PlayerController : MonoBehaviour
     // Private Variables
     private Rigidbody2D rBody;
     private float counter = 0.0f;
-     
+   
+
     // Start is called before the first frame update
     // Use this for initialization
     void Start()
