@@ -38,8 +38,9 @@ public class DestroyByContact : MonoBehaviour
             {
             //trigger game over logic in here
             GameObject temp =  Instantiate(explosionPlayer, other.transform.position, other.transform.rotation);
-            
+                Destroy(temp, 2.0f);
                 Destroy(other.gameObject);
+            gameController.GameOver();
             }
         gameController.AddScore(scoreValue);
         //Instantiate asteroid explosion animation

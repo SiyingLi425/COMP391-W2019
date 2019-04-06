@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     [Header ("Wave Settings")]
@@ -20,6 +21,8 @@ public class GameController : MonoBehaviour
 
     //private variables
     private int score = 0;
+    private bool gameOver;
+    private bool restart;
     
 
     // Start is called before the first frame update
@@ -28,12 +31,38 @@ public class GameController : MonoBehaviour
         //Run a separate function from the rest of the code in its own thread
         StartCoroutine(SpawnWaves());
         UpdateScore();
+        restart = false;
+        gameOver = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-    
+        if (restart)
+        {
+            //Listen for a key press
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                // THE OLD WAY (DONT DO THIS) because its old and obsolete
+                //Application.LoadLevel(Application.loadedLevel);
+
+                //The better, but error prone way
+                //SceneManager.LoadScene("SampleScene");
+
+                //the best way to reload the same scene
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            
+
+
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            Application.Quit();
+        }
     }
 
     // IEumerator return type is required for Coroutines
@@ -50,7 +79,20 @@ public class GameController : MonoBehaviour
                 yield return new WaitForSeconds(spawnWait); //wait time between spawning each asteroid
             }
             yield return new WaitForSeconds(waveWait);
+
+            //check if the game is over
+
+            if (gameOver)
+            {
+                //Tell the user how to restart their game.
+                restartText.gameObject.SetActive(true);
+                restartText.text = "Press R for Restart";
+
+                break;
+            }
         }
+
+        yield return new WaitForSeconds(waveWait);
     }
 
     //updates my scores text
@@ -64,5 +106,14 @@ public class GameController : MonoBehaviour
     {
         score += newScoreValue;
         UpdateScore();
+    }
+
+    //Perform Game Over Duties
+    public void GameOver()
+    {
+        //enable Text on the screen
+        gameOverText.gameObject.SetActive(true);
+        restart = true;
+        gameOver = true;
     }
 }
